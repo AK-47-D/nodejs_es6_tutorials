@@ -13,7 +13,7 @@ import {log} from "./lib/util_for_babel";
 
  npm install babel-register babel-preset-env --D
 
- 命令行执行：
+ 2.命令行执行：
 
  babel-node es6_const_let_babel_demo.js
 
