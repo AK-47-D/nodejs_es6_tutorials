@@ -1,25 +1,53 @@
 // 在 Node 中使用模块的正确姿势：
 const log = require("./lib/util_for_node");
 
-// ES5 string plus
-function helloES5(name, age) {
-    return 'Hello,' + name + ', My Age is ' + age;
+class Product {
+    constructor(name, price) {
+        this.name = name
+        this.price = price
+    }
+
+    list() {
+        return [
+            new Product("iPad Pro 2018", 10000),
+            new Product('iPhone XMax', 9000),
+        ]
+    }
 }
 
-log(helloES5('ES5', 10));
+const main = () => {
+    const p = new Product()
+    const list = p.list()
+    log(list)
+}
 
-// ES6 template literals
-const helloES6 = (name, age) => {
-    return `Hello,${name}, My Age is ${age}`
-};
-log(helloES6('ES6', 5));
+main();
 
+/**
+ * 输出：
+ $ node es6_class_demo.js
 
-/** 输出：
-
- $ node es6_template_literals_demo.js
- Hello,ES5, My Age is 10
- Hello,ES6, My Age is 5
+ [ Product { name: 'iPad Pro 2018', price: 10000 },
+ Product { name: 'iPhone XMax', price: 9000 } ]
 
  */
 
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(this.name + ' makes a noise.');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(this.name + ' barks.');
+    }
+}
+
+var d = new Dog('Mitzie');
+d.speak(); // Mitzie barks.
